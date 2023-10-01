@@ -4,7 +4,6 @@ IMAGE_TAG = latest
 
 # Define the container names
 OTP_CONTAINER_NAME = otp-api-container
-MONGODB_CONTAINER_NAME = mongodb-container
 
 # Build the Docker image
 build:
@@ -22,19 +21,6 @@ stop:
 # Remove the OTP API Docker image
 clean:
 	docker rmi $(IMAGE_NAME):$(IMAGE_TAG)
-
-# Start a mysql Docker container
-
-MYSQL_CONTAINER:=mysql-container
-MYSQL_IMAGE:=mysql:latest
-mysql-start:
-	docker run -d  --rm --name ${MYSQL_CONTAINER} -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 ${MYSQL_IMAGE}
-
-# Stop mysql Docker container
-mysql-stop:
-	docker stop ${MYSQL_CONTAINER}
-
-mysql: mysql-stop mysql-start
 
 # Shortcut for building, running, and stopping the OTP API container
 all: build run

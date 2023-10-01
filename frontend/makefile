@@ -21,13 +21,4 @@ stop:
 clean: stop
 	@docker rmi $(DOCKER_IMAGE_NAME)
 
-# Help target for displaying available commands
-help:
-	@echo "Usage: make [command]"
-	@echo "Commands:"
-	@echo "  build       Build the Docker image"
-	@echo "  run         Run the Docker container"
-	@echo "  stop        Stop and remove the Docker container"
-	@echo "  clean       Stop, remove the container, and remove the Docker image"
-
 all: build run
